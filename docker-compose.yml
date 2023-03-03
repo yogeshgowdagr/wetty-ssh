@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  wetty:
+    container_name: wettyssh
+    image: wettyoss/wetty:latest
+    ports:
+      - 3000:3000
+    command: --title=Wetty-ssh --base='/' --ssh-host=ubuntu-ssh --ssh-user=ubuntu --ssh-pass=ubuntu123876 --allow-iframe
+    depends_on:
+      - ubuntu-ssh
+    
+  ubuntu-ssh:
+    container_name: ubuntu-ssh
+    image:  yogeshgowdagr/wetty-ssh:latest
