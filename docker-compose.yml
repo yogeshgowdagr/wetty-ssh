@@ -15,8 +15,8 @@ services:
     image:  yogeshgowdagr/wetty-ssh:latest
 
 
-  webssh-web:
-    container_name: webssh-nginx
+  wettyssh-web:
+    container_name: wettyssh-nginx
     image: nginx:stable
     ports:
       - "80:80"
@@ -24,4 +24,5 @@ services:
     volumes:
       - ./templates:/etc/nginx/templates:ro
       - ./ssl:/etc/nginx/ssl:ro
-    
+    depends_on:
+      - wetty
