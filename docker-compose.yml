@@ -5,7 +5,7 @@ services:
     container_name: wettyssh
     image: wettyoss/wetty:latest
     ports:
-      - 3000:3000
+      - '3000'
     command: --title=Wetty-ssh --base='/' --ssh-host=ubuntu-ssh --ssh-user=ubuntu --ssh-pass=ubuntu123876 --allow-iframe
     depends_on:
       - ubuntu-ssh
@@ -13,3 +13,15 @@ services:
   ubuntu-ssh:
     container_name: ubuntu-ssh
     image:  yogeshgowdagr/wetty-ssh:latest
+
+
+  webssh-web:
+    container_name: webssh-nginx
+    image: nginx:stable
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./templates:/etc/nginx/templates:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    
